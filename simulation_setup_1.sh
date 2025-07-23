@@ -1,7 +1,7 @@
 #!/bin/bash
-source /home/sudip/gmx_2018-3.env
-cp ./../BRP-187/BRP18/3o8y_prot_chainB.pdb .
-cp -r ../BRP-187/BRP18/charmm36-jul2021.ff/ .
+source /PATH/to/GROMACS/ENVIRONMENT/gmx_2018-3.env   # only if you have installed other than /usr/local/bin 
+cp ./../BRP-187/BRP18/3o8y_prot_chainB.pdb .         # set the path and name of pdb file according to your requirement
+cp -r ../BRP-187/BRP18/charmm36-jul2021.ff/ .        # comment out if all the files are in the current directory 
 gmx pdb2gmx -f 3o8y_prot_chainB.pdb -o 3o8y_prot_chainB.gro << EOF
 1
 1
