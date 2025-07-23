@@ -1,14 +1,14 @@
 #!/bin/bash
 #SBATCH -N 1
-#SBATCH -A plafnet2
+#SBATCH -A account_name              ## check access of the account to associated partition_Name
 ##SBATCH --job-name=job_name
-#SBATCH -p plafnet2
-#SBATCH --gres=gpu:2
-#SBATCH -n 36
-#SBATCH --mem-per-cpu=3000
-#SBATCH --time=4-00:00:00
-##SBATCH --exclude=gnode[118]
-# module add u18/gromacs/2021.4-plumed2
+#SBATCH -p partition_Name
+#SBATCH --gres=gpu:1                ## specify the number of GPUS
+#SBATCH -n 36                       ## total number of threads 
+#SBATCH --mem-per-cpu=3000          ## check the requirement of memory for your system and assign the value in MB
+#SBATCH --time=4-00:00:00           ## Time limit to run the job
+##SBATCH --exclude=gnode[118]       ## specify node to exclude
+
 module add u18/gromacs/2021.4-plumed2
 
 gmx_mpi grompp -f ./mdp/minim_1.mdp -c complex_solv_ions.gro -p topol.top -o em.tpr -pp em -po em
